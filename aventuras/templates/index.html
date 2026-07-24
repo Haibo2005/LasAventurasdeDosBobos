@@ -1,0 +1,545 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    <!-- PORTADA -->
+    <div class="book" id="book">
+
+        <div class="emoji">
+            🐼 ❤️ 🐸
+        </div>
+
+        <h1>Las Aventuras de Dos Bobos</h1>
+
+        <p class="subtitle">
+            Una pequeña historia sobre un panda,
+            una ranita
+            y todas las aventuras
+            que todavía les quedan por vivir.
+        </p>
+
+        <button id="startButton">
+            📖 Abrir el libro
+        </button>
+
+    </div>
+
+    <!-- INTRO -->
+    <div class="intro" id="intro">
+
+        <h2 id="introText"></h2>
+
+        <button id="continueButton">
+            Comenzar la aventura →
+        </button>
+
+    </div>
+
+    <!-- CAPÍTULO 1 -->
+    <div class="chapter hidden" id="chapter1">
+
+        <h3>Capítulo 1</h3>
+
+        <h1>Volvimos a hablar</h1>
+
+        <p>
+            Habíamos dejado de hablar.
+
+            <br><br>
+
+            Parecía que todo había terminado.
+
+            <br><br>
+
+            Pero un cumpleaños...
+
+            <br><br>
+
+            acabó cambiándolo todo.
+        </p>
+
+        <button id="chapterButton">
+            Continuar →
+        </button>
+
+    </div>
+
+    <!-- CONVERSACIÓN -->
+    <div class="conversationScene hidden" id="conversationScene">
+
+        <div class="conversationIntro">
+            <span>Un mensaje después de mucho tiempo...</span>
+        </div>
+
+        <div class="discordWindow">
+
+            <div class="discordTop">
+                <div class="discordLogo">
+                    🎮
+                </div>
+
+                <div>
+                    <strong>Mensajes directos</strong>
+                    <span>Una conversación inesperada</span>
+                </div>
+
+                <div class="discordCircles">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="discordBody" id="discordBody">
+
+                <div class="discordWelcome" id="discordWelcome">
+                    <div class="welcomeAvatar">
+                        🐸
+                    </div>
+
+                    <h2>Little Frog</h2>
+
+                    <p>
+                        Este es el comienzo de vuestra conversación.
+                    </p>
+                </div>
+
+                <div class="messages" id="messages"></div>
+
+                <div class="typing hidden" id="typing">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+
+            <div class="discordBottom">
+                <div class="fakeInput">
+                    Escribir un mensaje...
+                </div>
+            </div>
+
+        </div>
+
+        <div class="conversationControls">
+
+            <button id="nextMessageButton">
+                Ver el primer mensaje
+            </button>
+
+            <button class="hidden" id="finishConversationButton">
+                Seguir con la historia →
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- VIAJE: IBIZA - MADRID - MURCIA -->
+    <div class="travelScene hidden" id="travelScene">
+
+        <div class="storyHeading travelHeading">
+            <span>Capítulo 2</span>
+            <h1>Cruzar el mapa por una ranita</h1>
+            <p>Un panda, una maleta, muchísimo sueño y una idea bastante clara.</p>
+        </div>
+
+        <div class="travelCard">
+
+            <div class="travelDecor travelCloudOne">☁️</div>
+            <div class="travelDecor travelCloudTwo">☁️</div>
+
+            <div class="routeTrack">
+
+                <div class="routeLine">
+                    <div class="routeProgress" id="routeProgress"></div>
+                </div>
+
+                <div class="routeStop routeIbiza">
+                    <div class="stopIcon">🏝️</div>
+                    <strong>Ibiza</strong>
+                    <small>Salida</small>
+                </div>
+
+                <div class="routeStop routeMadrid">
+                    <div class="stopIcon">🏙️</div>
+                    <strong>Madrid</strong>
+                    <small>Cambio de transporte</small>
+                </div>
+
+                <div class="routeStop routeMurcia">
+                    <div class="stopIcon">🏡</div>
+                    <strong>Murcia</strong>
+                    <small>Destino: una ranita</small>
+                </div>
+
+                <div class="travelTransport" id="travelTransport">
+                    <span class="transportIcon" id="transportIcon">✈️</span>
+                    <span class="transportPanda">🐼</span>
+                    <span class="transportZzz">z Z z</span>
+                </div>
+
+            </div>
+
+            <div class="travelStatusBox">
+                <span class="travelStatusIcon" id="travelStatusIcon">🎫</span>
+                <p id="travelStatus">Preparando el viaje desde Ibiza...</p>
+            </div>
+
+        </div>
+
+        <button class="storyButton hidden" id="arrivalButton">
+            Bajar del bus en Murcia →
+        </button>
+
+    </div>
+
+    <!-- ESPERA DEBAJO DE SU CASA -->
+    <div class="waitingScene hidden" id="waitingScene">
+
+        <div class="waitingSky" id="waitingSky">
+
+            <div class="waitMoon" id="waitMoon">🌙</div>
+            <div class="waitSun" id="waitSun">☀️</div>
+
+            <div class="waitClock">
+                <span class="clockIcon">⏰</span>
+                <strong id="waitHour">05:00</strong>
+            </div>
+
+            <div class="waitingTitle">
+                <span>Murcia</span>
+                <h1>Esperando a que la ranita despierte</h1>
+            </div>
+
+            <div class="houseScene">
+
+                <div class="house">
+                    <div class="houseRoof"></div>
+
+                    <div class="houseWindow" id="houseWindow">
+                        <div class="windowGlass">
+                            <span class="sleepingFrog" id="sleepingFrog">🐸</span>
+                            <span class="frogZzz" id="frogZzz">zZz</span>
+                        </div>
+                        <div class="windowLine windowLineVertical"></div>
+                        <div class="windowLine windowLineHorizontal"></div>
+                    </div>
+
+                    <div class="houseDoor">🚪</div>
+                </div>
+
+                <div class="streetLamp">
+                    <div class="lampLight" id="lampLight"></div>
+                    <div class="lampTop"></div>
+                    <div class="lampPost"></div>
+                </div>
+
+                <div class="pandaWaiting" id="pandaWaiting">
+                    <span class="waitingPandaEmoji">🐼</span>
+                    <span class="pandaWaitZzz" id="pandaWaitZzz">zZz</span>
+                    <span class="pandaBouquet hidden" id="pandaBouquet">💐</span>
+                </div>
+
+                <div class="sidewalk"></div>
+
+            </div>
+
+            <div class="waitingPanel">
+                <p id="waitingText">
+                    El panda llegó demasiado pronto. Muchísimo demasiado pronto.
+                </p>
+
+                <button class="storyButton" id="startWaitingButton">
+                    Empezar a esperar...
+                </button>
+
+                <button class="storyButton hidden" id="flowersButton">
+                    Sacar las flores 💐
+                </button>
+
+                <button class="storyButton hidden" id="askQuestionButton">
+                    Hacerle la pregunta →
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARTA PARA PEDIRLE SALIR -->
+    <div class="proposalScene hidden" id="proposalScene">
+
+        <div class="proposalBackgroundHeart heartOne">💗</div>
+        <div class="proposalBackgroundHeart heartTwo">💕</div>
+        <div class="proposalBackgroundHeart heartThree">💖</div>
+
+        <div class="proposalCard proposalCardExtended" id="proposalCard">
+
+            <div class="letterTape letterTapeLeft"></div>
+            <div class="letterTape letterTapeRight"></div>
+
+            <div class="proposalPhotoBox">
+                <img src="{% static 'img/flores.jpg' %}" alt="img de prueba con flores" class="proposalPhotoImage" decoding="async">
+            
+            </div>
+
+            <div class="proposalCharacters">
+                <span>🐼</span>
+                <span class="proposalFlowers">💐</span>
+                <span>🐸</span>
+            </div>
+
+            <p class="proposalSmallText">
+                Después de un vuelo, un bus y siete horas esperando debajo de tu casa...
+            </p>
+
+            <h1>¿Quieres salir conmigo?</h1>
+
+            <p class="proposalNote" id="proposalNote">
+                Elige con cuidado, boba.
+            </p>
+
+            <div class="proposalActions" id="proposalActions">
+
+                <button class="yesButton" id="yesButton">
+                    Sí 💗
+                </button>
+
+                <button class="noButton" id="noButton">
+                    No
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- LÍNEA TEMPORAL -->
+    <div class="timelineScene hidden" id="timelineScene">
+
+        <div class="timelineIntroBox">
+            <span>Nuestros recuerdos</span>
+            <h1>Nuestro viaje</h1>
+            <p>
+                Una línea del tiempo con algunos de todos esos momentos que han hecho
+                que esta historia sea tan nuestra.
+            </p>
+        </div>
+
+        <div class="memoryTimeline" id="memoryTimeline">
+
+            <article class="memoryItem left revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Murcia</span>
+                    <h3>Cogidos de la mano por las calles</h3>
+                    <p>
+                        Caminando por Murcia, cogiéndonos de la mano y yendo con cuidado
+                        para no encontrarnos a tu madre.
+                    </p>
+                    <img src="{% static 'img/mano.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem right revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Celebración</span>
+                    <h3>El cumpleaños de Carmen</h3>
+                    <p>
+                        Otro momento bonito juntos, celebrando, riéndonos y guardando
+                        un recuerdo más para nosotros.
+                    </p>
+                    <img src="{% static 'img/carmen.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem left revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Invierno</span>
+                    <h3>Nuestra aventura en Mercadona</h3>
+                    <p>
+                        Haciendo tonterías, paseando entre pasillos y convirtiendo algo
+                        tan simple en un recuerdo muy nuestro.
+                    </p>
+                    <img src="{% static 'img/mercadona.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem right revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Noche</span>
+                    <h3>Paseos por Murcia y el tiovivo</h3>
+                    <p>
+                        Las noches en Murcia, los paseos tranquilos y ese toque especial
+                        del tiovivo que hacía todo todavía más bonito.
+                    </p>
+                    <img src="{% static 'img/tiovivo.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem left revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Navidad</span>
+                    <h3>Montando nuestro árbol de Navidad</h3>
+                    <p>
+                        Decorando el árbol, montando nuestra pequeña Navidad y haciendo
+                        que todo se sintiera todavía más especial.
+                    </p>
+                    <img src="{% static 'img/navidad.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem right revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">San Valentín</span>
+                    <h3>La rosa de 10 euros</h3>
+                    <p>
+                        Nos estafaron con una rosa de 10 €, sí, pero aun así se quedó
+                        como una de esas historias que siempre recordaremos riéndonos.
+                    </p>
+                    <img src="{% static 'img/rosa.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem left revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Abril</span>
+                    <h3>Tu cumpleaños</h3>
+                    <p>
+                        Un día importante, una foto contigo y otro recuerdo que se queda
+                        guardado para siempre.
+                    </p>
+                    <img src="{% static 'img/cumpleanos.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem right revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Playa</span>
+                    <h3>Un día de playa</h3>
+                    <p>
+                        Sol, agua, risas y la sensación de que cualquier sitio estaba bien
+                        si era contigo.
+                    </p>
+                    <img src="{% static 'img/playa.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem left revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Supermercado</span>
+                    <h3>Paseito</h3>
+                    <p>
+                        Otra mini aventura de esas que parecen pequeñas, pero que contigo
+                        se convierten en un recuerdo con muchísimo encanto.
+                    </p>
+                    <img src="{% static 'img/paseo.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem right revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Julio</span>
+                    <h3>Tu Carrefour</h3>
+                    <p>
+                        Yendo por tu Carrefour, probándome cosas, comprando tonterías y
+                        hasta huevo siendo yo alérgico. Bastante bobo, la verdad.
+                    </p>
+                    <img src="{% static 'img/hola.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+            <article class="memoryItem left revealItem">
+                <div class="memoryCard">
+                    <span class="memoryTag">Cita</span>
+                    <h3>Ir al cine y a los bolos</h3>
+                    <p>
+                        Otra cita más de esas que parecen normales, pero que contigo se
+                        convierten en una escena que quiero repetir muchas veces.
+                    </p>
+                    <img src="{% static 'img/bolos.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+            </article>
+
+
+        </div>
+
+        <div class="timelineEndAction">
+            <button class="storyButton" id="toFinalSceneButton">
+                Llegar al 24/7 →
+            </button>
+        </div>
+
+    </div>
+
+    <!-- FINAL -->
+    <div class="loveScene hidden" id="loveScene">
+
+        <div class="heartConfettiContainer" id="heartConfettiContainer"></div>
+
+        <div class="loveCard loveCardExtended">
+
+            <div class="loveCharacters">
+                <span class="lovePanda">🐼</span>
+                <span class="bigHeart">💗</span>
+                <span class="loveFrog">🐸</span>
+            </div>
+
+            <p class="asYouWish">24 / 7</p>
+
+            <h1>24/7 quiero estar contigo</h1>
+
+            <p>
+                Volvería a coger ese avión, ese bus y a esperarte todas las horas del mundo
+                con tal de encontrarte otra vez. Porque contigo, incluso los recuerdos más
+                pequeños se vuelven enormes.
+            </p>
+
+            <strong>Muchas gracias por todo, boba. Te quiero muchísimo.</strong>
+
+            <div class="finalPhotoGrid">
+                <div class="finalPhotoItem">
+                    <img src="{% static 'img/corazon.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                </div>
+                <div class="finalPhotoItem">
+                    <img src="{% static 'img/espejo.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                   
+                </div>
+                <div class="finalPhotoItem">
+                    <img src="{% static 'img/cama.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                    
+                </div>
+                <div class="finalPhotoItem">
+                    <img src="{% static 'img/mona.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                   
+                </div>
+                <div class="finalPhotoItem">
+                    <img src="{% static 'img/besonavidad.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                    
+                </div>
+                <div class="finalPhotoItem">
+                    <img src="{% static 'img/ascensor.jpg' %}" alt="img de prueba" loading="lazy" decoding="async">
+                    
+                </div>
+            </div>
+
+            <div class="loveSignature">
+                Ojalá muchísimos más años, muchísimos más recuerdos y muchísimas más aventuras contigo. ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
